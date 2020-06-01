@@ -1,10 +1,10 @@
 Base_Path="/home/own/Work Realm/AutoTest"
 
-BIOS_UEFI=Kernel/x86_64/OVMF.fd
+BIOS_UEFI=kernel/x86_64/OVMF.fd
 
-EFI_System_Partition=Kernel/x86_64/esp
+EFI_System_Partition=kernel/x86_64/esp
 
-FileSystem=FileSystem/x86_64.qcow2
+FileSystem=file_system/x86_64.qcow2
 
 echo Start Qemu
 
