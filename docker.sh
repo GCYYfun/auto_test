@@ -15,7 +15,7 @@ if [ $(docker ps -a |grep $container_name|wc -l) -eq 1 ]; then
 		docker exec -it $container_name bin/bash
 	fi
 else 
-	docker run -v /home/own/test:/root/user --name ${container_name} -it ubuntu sh /root/user/env/env.sh
+	docker run -v $(pwd)/userapp:/root/user --name ${container_name} -it ubuntu sh /root/user/env/env.sh
 fi
 
 # "sh /root/user/env/env.sh"

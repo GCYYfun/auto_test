@@ -36,6 +36,9 @@ apt install cmake -y
 echo install g++...
 apt install g++ -y
 
+echo install git...
+apt install git -y
+
 echo install musl...
 
 cd $musl_dir;wget "https://musl.cc/${tarball}"
