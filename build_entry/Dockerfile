@@ -1,0 +1,31 @@
+FROM ubuntu:20.04
+
+# 换源
+
+WORKDIR /root
+
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
+    && echo deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse > /etc/apt/sources.list\ 
+    && apt-get upgrade && apt-get update
+
+# 依赖软件 
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y tzdata \
+    && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata \
+    && apt-get install make gcc g++ cmake git -y
+
+# 手动安装muslcc [musl.cc](https://musl.cc)
+
+## From 网络
+
+### TODO 
+
+## From 本地
+
+COPY x86_64-linux-musl-cross.tgz /root/x86_64-linux-musl-cross.tgz
+RUN tar xvf x86_64-linux-musl-cross.tgz \
+    && cd x86_64-linux-musl-cross \
+    && cp -r * /usr/
+
+WORKDIR /root
