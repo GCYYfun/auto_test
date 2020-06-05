@@ -1,8 +1,8 @@
 qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
 [2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40mBdsDxe: loading Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
 BdsDxe: starting Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
-Hello world! from CPU 1!
 Hello world! from CPU 3!
+Hello world! from CPU 1!
 Hello world! from CPU 2!
 Hello world! from CPU 0!
 / # cd libc-test
@@ -14,8 +14,8 @@ src/common/runtest.c:29: src/api/main.exe exec failed: No such file or directory
 qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
 [2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40mBdsDxe: loading Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
 BdsDxe: starting Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
-Hello world! from CPU 3!
 Hello world! from CPU 2!
+Hello world! from CPU 3!
 Hello world! from CPU 1!
 Hello world! from CPU 0!
 / # cd libc-test
@@ -23,11 +23,12 @@ cd libc-test
 /libc-test # src/common/runtest.exe -w '' src/functional/argv.exe
 
 src/common/runtest.exe -w '' src/functional/argv.exe
-/libc-test # qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
+/libc-test # 
+qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
 [2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40mBdsDxe: loading Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
 BdsDxe: starting Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
-Hello world! from CPU 2!
 Hello world! from CPU 1!
+Hello world! from CPU 2!
 Hello world! from CPU 3!
 Hello world! from CPU 0!
 / # cd libc-test
@@ -35,12 +36,12 @@ cd libc-test
 /libc-test # src/common/runtest.exe -w '' src/functional/argv-static.exe
 
 src/common/runtest.exe -w '' src/functional/argv-static.exe
-/libc-test # qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
+/libc-test #qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
 [2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40mBdsDxe: loading Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
 BdsDxe: starting Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
 Hello world! from CPU 1!
-Hello world! from CPU 3!
 Hello world! from CPU 2!
+Hello world! from CPU 3!
 Hello world! from CPU 0!
 / # cd libc-test
 cd libc-test
@@ -61,3 +62,4 @@ cd libc-test
 
 src/common/runtest.exe -w '' src/functional/ipc_sem.exe
 === BEGIN rCore stack trace ===
+#
