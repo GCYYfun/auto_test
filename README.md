@@ -6,8 +6,6 @@
 
 docker
 
-qemu[可选]
-
 [注意] 确保路径全英文小写
 
 ## 目录结构
@@ -40,7 +38,15 @@ auto-test
     ···
 ```
 
-## 本地运行 [需要qemu] 
+## 使用
+
+    下载 仓库 
+    git clone https://github.com/GCYYfun/auto_test.git
+
+    下载 大文件 
+    git lfs https://github.com/GCYYfun/auto_test.git
+
+## 本地运行 [过时 不可取]
 
 材料放置
 ```
@@ -54,10 +60,37 @@ auto-test
 
     sh x.sh
 
-## 在docker里测试
+## 在docker里测试 [Done]
 
+### 大致操作
 
+1. 自己编译好的 内核镜像  
+    以rcore 举例 应该是kernel/target/x86_64下的esp文件夹
 
-## 用户程序 测试
+    自己编译好的 文件系统镜像  
+    以rcore 举例 应该是user/build/x86_64.qcow2 文件
 
-sh docker.sh
+2. 把esp 和 x86_64.qcow2 分别放在  
+    run_entry/diy_file/kernel/x86_64/ 下  和  
+    run_entry/diy_file/file_system/  下
+
+3. 在 run_entry/diy_file/work 文件夹下建立希望执行的测试命令文件
+
+4. 在 run_entry/diy_file/ 下 diy 自己的测试命令脚本
+
+5. 在 run_entry/Makefile 里 添加自己的执行命令
+
+### 目前已经完成
+
+1. 有libc的测试脚本  只需完成 内核的装载就可进行测试内核syscall
+
+    装载好内核后 run_entry 下
+    ```
+    制作docker image [仅一次]
+    make build_docker_image
+
+    运行
+    make run
+
+    ```
+    在 run_entry/diy_file/result/result.txt 中查看运行结果 (可实时观测)

@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y tzdata \
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && apt-get install make gcc g++ cmake git -y
+    && apt-get install make gcc g++ cmake git wget -y
 
 # 手动安装muslcc [musl.cc](https://musl.cc)
 
@@ -23,9 +23,19 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 ## From 本地
 
+COPY musl-1.2.0.tar.gz /root/musl-1.2.0.tar.gz
+RUN tar zxf musl-1.2.0.tar.gz \
+    && cd musl-1.2.0 \
+    && ./configure --prefix=/root/musl-install/ \
+    && make && make install \
+    && cd /root/musl-install/bin \
+    && ln -s musl-gcc x86_64-linux-musl-gcc \
+    && cd /root
+
 COPY x86_64-linux-musl-cross.tgz /root/x86_64-linux-musl-cross.tgz
 RUN tar xvf x86_64-linux-musl-cross.tgz \
     && cd x86_64-linux-musl-cross \
-    && cp -r * /usr/
+    && cp -r * /usr/ 
+
 
 WORKDIR /root

@@ -1,0 +1,8 @@
+src/common/runtest.exe -w '' src/api/main.exe
+src/common/runtest.exe -w '' src/functional/argv.exe
+src/common/runtest.exe -w '' src/functional/argv-static.exe
+
+
+src/common/runtest.exe -w '' src/functional/fcntl.exe 
+
+src/common/runtest.exe -w '' src/functional/ipc_sem.exe

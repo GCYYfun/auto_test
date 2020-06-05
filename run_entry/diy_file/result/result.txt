@@ -1,40 +1,5 @@
-qemu-system-x86_64: -device ide-drive,drive=sfsimg,bus=ahci0.0: warning: 'ide-drive' is deprecated, please use 'ide-hd' or 'ide-cd' instead
-[2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40mBdsDxe: loading Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
-BdsDxe: starting Boot0001 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Primary,Master,0x0)
-INFO: bootloader is running
-INFO: opening file: \EFI\Boot\rboot.conf
-INFO: loading file to memory
-INFO: switching graphic mode
-INFO: config: Config {
-INFO:     physical_memory_offset: 0xffff800000000000,
-INFO:     kernel_path: "\\EFI\\rCore\\kernel.elf",
-INFO:     resolution: Some(
-INFO:         (
-INFO:             0x400,
-INFO:             0x300,
-INFO:         ),
-INFO:     ),
-INFO:     initramfs: None,
-INFO:     cmdline: "",
-INFO: }
-INFO: acpi2: 0xbfbfa014
-INFO: opening file: \EFI\rCore\kernel.elf
-INFO: loading file to memory
-INFO: mapping ELF
-INFO: mapping physical memory
-INFO: starting application processors
-INFO: Hello world! from CPU exit boot services1!
-Hello world! from CPU 2!
-Hello world! from CPU 3!
-
-Hello world! from CPU 0!
-/ # cd libc-test
-src/common/runtest.exe -w '' src/functional/argv.exe >src/functional/argv.err && echo successed ; echo || echo argv failed ; echo
-Done
-cd libc-test
-/libc-test # src/common/runtest.exe -w '' src/functional/argv.exe >src/functiona
-l/argv.err && echo successed ; echo || echo argv failed ; echo
-successed
-
-
-/libc-test # Done
+1 main failed
+2 argv successed
+3 argv-static successed
+4 fcntl failed
+5 ipc_sem Panic

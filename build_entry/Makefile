@@ -11,7 +11,7 @@ run:
 	docker run \
     -v $(shell pwd)/diy_file:/root/diy_file \
     --name ${container_name} \
-    -it ${image_name} sh diy_file/start.sh
+    -it ${image_name}
 
 clean:
 	docker rm -v ${container_name}
