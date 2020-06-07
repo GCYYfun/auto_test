@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y tzdata \
     && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && apt-get install git gcc python3.8 python3-pip make pkg-config libglib2.0-dev libpixman-1-dev -y
+    && apt-get install git cpu-checker gcc python3.8 python3-pip make pkg-config libglib2.0-dev libpixman-1-dev qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils -y
 
 # 安装Qemu
 

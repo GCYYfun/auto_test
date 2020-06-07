@@ -13,13 +13,13 @@ FileSystem = BaseFile + "file_system/x86_64.qcow2"
 LogFile = BaseFile + "result/logfile.txt"
 Result = BaseFile + "result/result.txt"
 
-Config = BaseFile + "work/libc-test"
+Config = BaseFile + "work/libc-test.v2.bak"
 
 #==============================================
 
 # qeme 的 参数
 
-args=["-smp","cores=4","-bios",BIOS_UEFI,"-drive","format=raw,file=fat:rw:"+ EFI_System_Partition,
+args=["-smp","cores=4","-bios",BIOS_UEFI,"-enable-kvm","-drive","format=raw,file=fat:rw:"+ EFI_System_Partition,
                                 "-serial","mon:stdio","-m","4G",
                                 "-device","isa-debug-exit","-drive","format=qcow2,file="+FileSystem+",media=disk,cache=writeback,id=sfsimg,if=none",
                                 "-device","ahci,id=ahci0","-device","ide-drive,drive=sfsimg,bus=ahci0.0","-nographic"]
@@ -61,29 +61,31 @@ def main():
         child.sendline("cd libc-test")
         child.expect(".*#")
         child.sendline(line)
+
+        name = str(num)+" "+line.split("/",3)[3].split(".")[0]
         
         index = child.expect(["successed","failed",pexpect.EOF,pexpect.TIMEOUT,"/libc-test #","Hangup","=== BEGIN rCore stack trace ==="]) 
         if index == 0: 
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" successed\n")
+                f.writelines(name+" successed\n")
         elif index == 1:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" failed\n")
+                f.writelines(name+" failed\n")
         elif index == 2:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" EOF\n")
+                f.writelines(name+" EOF\n")
         elif index == 3:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" 10s_timeout\n")
+                f.writelines(name+" 10s_timeout\n")
         elif index == 4:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" successed\n")
+                f.writelines(name+" successed\n")
         elif index == 5:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" Hangup\n")
+                f.writelines(name+" hangup\n")
         elif index == 6:
             with open(Result,"a",encoding='utf-8',errors='ignore') as f:
-                f.writelines(str(num)+" "+line.split("/")[4].split(".")[0]+" Panic\n")
+                f.writelines(name+" panic\n")
 
 if __name__ == "__main__":
     main()
