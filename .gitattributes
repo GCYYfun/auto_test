@@ -4,3 +4,4 @@
 *.bak filter=lfs diff=lfs merge=lfs -text
 *.qcow2 filter=lfs diff=lfs merge=lfs -text
 test_space/rCore_libc-test/ filter=lfs diff=lfs merge=lfs -text
+test_space/zCore_linux_libc-test/ filter=lfs diff=lfs merge=lfs -text
