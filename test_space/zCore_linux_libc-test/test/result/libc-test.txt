@@ -1,0 +1,10 @@
+/test/libc-test/src/api/main.exe
+/test/libc-test/src/functional/argv.exe
+/test/libc-test/src/functional/argv-static.exe
+/test/libc-test/src/functional/basename.exe
+/test/libc-test/src/functional/basename-static.exe
+/test/libc-test/src/functional/clocale_mbfuncs.exe
+/test/libc-test/src/functional/clocale_mbfuncs-static.exe
+/test/libc-test/src/functional/clock_gettime.exe
+/test/libc-test/src/functional/clock_gettime-static.exe
+/test/libc-test/src/functional/crypt.exe

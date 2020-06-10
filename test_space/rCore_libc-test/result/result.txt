@@ -1,0 +1,5 @@
+1 api/main failed
+2 functional/argv successed
+3 functional/argv-static successed
+4 functional/fcntl failed
+5 functional/ipc_sem failed
